@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+### Zadání
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+* Vytvořit komponentu dialogového okna dle následujícího diagramu
+* Jednotlivé komponenty oddělit do vlastních souborů, vlastní komponenta dialogového okna pak bude jen "Lego" ostatních komponent
+* Celkově se komponenta dialogového okna bude skládat ze 7 dílčích komponent (tlačítko, skupina tlačítek, ikona a text, hlavička, patička a obsah)
+* Počet tlačítek jak v hlavičce tak v patičce je variabilní a může se lišit dialog od dialogu
+* Doplňující popis v patičce není povinný
+* Není důležité jak bude výsledná komponenta vypadat vzhledově (barvičky, rozměry, ...)
+* Postačí, když výsledné dialogové okno bude staticky umístěné do středu obrazovky, bez možnosti pohybu
+* Pro demonstrační účely by následně měla vzniknout "aplikace" (prostě a jednoduše jen použití vytvořené komponenty), která po kliknutí např. na tlačítko zobrazí komponentu dialogového okna, ideálně mít možnost "vyzkoušet" více dialogů (s tlačítky v patičce, bez tlačítek v patičce, různý počet tlačítek v hlavičce, ...)
 
-Currently, two official plugins are available:
+### Diagram struktury dialogového okna
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```plaintext
+┌─────────────────────────────────────────────────────────────────────────┐
+│ Modal                                                                   │
+│  ┌────────────────────────────────────────────────────────────────────┐ │
+│  │ Hlavička                                                           │ │
+│  │ ┌───────┐ ┌───────────┐ ┌────────────────────────────────────────┐ │ │
+│  │ │ Ikona │ │ Titulek   │ │ Skupina tlačítek                       │ │ │
+│  │ │       │ │           │ │ ┌──────────┐ ┌──────────┐ ┌──────────┐ │ │ │
+│  │ │       │ │           │ │ │ Tlačítko │ │ Tlačítko │ │ Tlačítko │ │ │ │
+│  │ │       │ │           │ │ └──────────┘ └──────────┘ └──────────┘ │ │ │
+│  │ └───────┘ └───────────┘ └────────────────────────────────────────┘ │ │
+│  └────────────────────────────────────────────────────────────────────┘ │
+│  ┌────────────────────────────────────────────────────────────────────┐ │
+│  │ Obsah                                                              │ │
+│  │                                                                    │ │
+│  │                                                                    │ │
+│  │                                                                    │ │
+│  │                                                                    │ │
+│  │                                                                    │ │
+│  │                                                                    │ │
+│  │                                                                    │ │
+│  └────────────────────────────────────────────────────────────────────┘ │
+│  ┌────────────────────────────────────────────────────────────────────┐ │
+│  │ Patička                                                            │ │
+│  │ ┌──────────────────────────────────┐ ┌───────────────────────────┐ │ │
+│  │ │ Doplňující popis                 │ │ Skupina tlačítek          │ │ │
+│  │ │                                  │ │ ┌──────────┐ ┌──────────┐ │ │ │
+│  │ │                                  │ │ │ Tlačítko │ │ Tlačítko │ │ │ │
+│  │ │                                  │ │ └──────────┘ └──────────┘ │ │ │
+│  │ └──────────────────────────────────┘ └───────────────────────────┘ │ │
+│  └────────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────┘
 ```
