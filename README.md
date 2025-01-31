@@ -1,3 +1,7 @@
+### [Link na aplikaci](https://nixie722.github.io/iw_react/)
+
+---
+
 ### Zadání
 
 * Vytvořit komponentu dialogového okna dle následujícího diagramu
