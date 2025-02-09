@@ -110,3 +110,17 @@ button:focus-visible {
   display: flex;
   gap: 8px;
 }
+
+.modal-opening-button {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.icon {
+  font-size: 26px;
+}
+
+.icon:hover {
+  transform: scale(10);
+  transition: all 10s;
+}
